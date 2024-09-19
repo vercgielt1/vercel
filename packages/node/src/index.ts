@@ -266,6 +266,8 @@ async function compile(
       },
     }
   );
+  console.log('nft res:');
+  console.log({ fileList, esmFileList, warnings });
 
   for (const warning of warnings) {
     debug(`Warning from trace: ${warning.message}`);

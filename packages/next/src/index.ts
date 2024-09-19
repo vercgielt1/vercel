@@ -1545,6 +1545,8 @@ export const build: BuildV2 = async buildOptions => {
         cache: nftCache,
         processCwd: entryPath,
       });
+      console.log('nft res:');
+      console.log(result);
       result.esmFileList.forEach(file => result.fileList.add(file));
 
       const parentFilesMap = getFilesMapFromReasons(
