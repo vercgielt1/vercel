@@ -448,6 +448,7 @@ export async function serverBuild({
     } else {
       const serverTraceLabel = `Tracing initial Next.js server files due to missing build trace`;
       console.time(serverTraceLabel);
+      console.log('starting trace:');
       const result = await nodeFileTrace([nextServerFile], {
         base: baseDir,
         cache: {},
@@ -777,6 +778,7 @@ export async function serverBuild({
         2
       )}`;
       console.time(traceLabel);
+      console.log('starting trace:');
       traceResult = await nodeFileTrace(pathsToTrace, {
         base: baseDir,
         cache: traceCache,

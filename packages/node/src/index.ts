@@ -184,6 +184,7 @@ async function compile(
     ? ['edge-light', 'browser', 'module', 'import', 'require']
     : undefined;
 
+  console.log('starting trace:');
   const { fileList, esmFileList, warnings } = await nodeFileTrace(
     [...inputFiles],
     {

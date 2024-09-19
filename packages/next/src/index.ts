@@ -1540,6 +1540,7 @@ export const build: BuildV2 = async buildOptions => {
       const lstatResults: { [key: string]: ReturnType<typeof lstat> } = {};
       const pathsToTrace = mergedPageKeys.map(page => pages[page].fsPath);
 
+      console.log('starting trace:');
       const result = await nodeFileTrace(pathsToTrace, {
         base: baseDir,
         cache: nftCache,
