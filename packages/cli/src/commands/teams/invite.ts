@@ -1,3 +1,4 @@
+import { types as nodeUtils } from 'node:util';
 import chalk from 'chalk';
 import Client from '../../util/client';
 import cmd from '../../util/output/cmd';
@@ -11,7 +12,7 @@ import { email as regexEmail } from '../../util/input/regexes';
 import getTeams from '../../util/teams/get-teams';
 import inviteUserToTeam from '../../util/teams/invite-user-to-team';
 import { isAPIError } from '../../util/errors-ts';
-import { errorToString, isError } from '@vercel/error-utils';
+import { errorToString } from '@vercel/error-utils';
 
 const validateEmail = (data: string) =>
   regexEmail.test(data.trim()) || data.length === 0;
@@ -110,7 +111,7 @@ export default async function invite(
         validate: validateEmail,
       });
     } catch (err: unknown) {
-      if (!isError(err) || err.message !== 'USER_ABORT') {
+      if (!nodeUtils.isNativeError(err) || err.message !== 'USER_ABORT') {
         throw err;
       }
     }

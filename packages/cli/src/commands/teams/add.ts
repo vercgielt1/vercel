@@ -1,3 +1,4 @@
+import { types as nodeUtils } from 'node:util';
 import chalk from 'chalk';
 import stamp from '../../util/output/stamp';
 import eraseLines from '../../util/output/erase-lines';
@@ -9,7 +10,7 @@ import { getCommandName } from '../../util/pkg-name';
 import Client from '../../util/client';
 import createTeam from '../../util/teams/create-team';
 import patchTeam from '../../util/teams/patch-team';
-import { errorToString, isError } from '@vercel/error-utils';
+import { errorToString } from '@vercel/error-utils';
 
 const validateSlug = (value: string) => /^[a-z]+[a-z0-9_-]*$/.test(value);
 
@@ -38,7 +39,7 @@ export default async function add(client: Client): Promise<number> {
         default: slug,
       });
     } catch (err: unknown) {
-      if (isError(err) && err.message === 'USER_ABORT') {
+      if (nodeUtils.isNativeError(err) && err.message === 'USER_ABORT') {
         output.log('Canceled');
         return 0;
       }
@@ -74,7 +75,7 @@ export default async function add(client: Client): Promise<number> {
       validate: validateName,
     });
   } catch (err: unknown) {
-    if (isError(err) && err.message === 'USER_ABORT') {
+    if (nodeUtils.isNativeError(err) && err.message === 'USER_ABORT') {
       output.log('No name specified');
       return 2;
     }
