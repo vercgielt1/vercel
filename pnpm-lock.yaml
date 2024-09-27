@@ -141,7 +141,7 @@ importers:
         specifier: 27.4.1
         version: 27.4.1
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../packages/build-utils
       '@vercel/frameworks':
         specifier: 3.3.0
@@ -198,7 +198,7 @@ importers:
         specifier: 1.0.4
         version: link:../constants
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../../packages/build-utils
       '@vercel/routing-utils':
         specifier: 3.1.0
@@ -322,7 +322,7 @@ importers:
   packages/cli:
     dependencies:
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       '@vercel/fun':
         specifier: 1.1.0
@@ -334,10 +334,10 @@ importers:
         specifier: 1.0.6
         version: link:../hydrogen
       '@vercel/next':
-        specifier: 4.3.10
+        specifier: 4.3.11
         version: link:../next
       '@vercel/node':
-        specifier: 3.2.15
+        specifier: 3.2.17
         version: link:../node
       '@vercel/python':
         specifier: 4.3.1
@@ -352,7 +352,7 @@ importers:
         specifier: 2.1.0
         version: link:../ruby
       '@vercel/static-build':
-        specifier: 2.5.25
+        specifier: 2.5.27
         version: link:../static-build
       chokidar:
         specifier: 3.3.1
@@ -460,9 +460,6 @@ importers:
       '@types/pluralize':
         specifier: 0.0.29
         version: 0.0.29
-      '@types/psl':
-        specifier: 1.1.0
-        version: 1.1.0
       '@types/qs':
         specifier: 6.9.7
         version: 6.9.7
@@ -497,10 +494,10 @@ importers:
         specifier: 1.0.0
         version: link:../../internals/get-package-json
       '@vercel-internals/types':
-        specifier: 2.0.7
+        specifier: 2.0.9
         version: link:../../internals/types
       '@vercel/client':
-        specifier: 13.4.7
+        specifier: 13.4.9
         version: link:../client
       '@vercel/error-utils':
         specifier: 2.0.2
@@ -679,9 +676,6 @@ importers:
       proxy-agent:
         specifier: 6.3.0
         version: 6.3.0
-      psl:
-        specifier: 1.1.31
-        version: 1.1.31
       qr-image:
         specifier: 3.2.0
         version: 3.2.0
@@ -712,6 +706,9 @@ importers:
       title:
         specifier: 3.4.1
         version: 3.4.1
+      tldts:
+        specifier: 6.1.47
+        version: 6.1.47
       tmp-promise:
         specifier: 1.0.3
         version: 1.0.3
@@ -746,7 +743,7 @@ importers:
   packages/client:
     dependencies:
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       '@vercel/error-utils':
         specifier: 2.0.2
@@ -980,7 +977,7 @@ importers:
         specifier: 7.3.10
         version: 7.3.10
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       jest-junit:
         specifier: 16.0.0
@@ -1035,7 +1032,7 @@ importers:
         specifier: 0.25.24
         version: 0.25.24
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       '@vercel/routing-utils':
         specifier: 3.1.0
@@ -1102,7 +1099,7 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       async-retry:
         specifier: 1.3.3
@@ -1151,7 +1148,7 @@ importers:
         specifier: 14.18.33
         version: 14.18.33
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       execa:
         specifier: 3.2.0
@@ -1212,7 +1209,7 @@ importers:
         specifier: 3.2.0
         version: 3.2.0
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       '@vercel/routing-utils':
         specifier: 3.1.0
@@ -1299,7 +1296,7 @@ importers:
         specifier: 16.18.11
         version: 16.18.11
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       '@vercel/error-utils':
         specifier: 2.0.2
@@ -1429,7 +1426,7 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       execa:
         specifier: ^1.0.0
@@ -1472,7 +1469,7 @@ importers:
         specifier: 6.0.0
         version: 6.0.0
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       execa:
         specifier: 3.2.0
@@ -1512,7 +1509,7 @@ importers:
         specifier: 7.3.13
         version: 7.3.13
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       glob:
         specifier: 10.3.16
@@ -1565,7 +1562,7 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       execa:
         specifier: 2.0.4
@@ -1585,9 +1582,6 @@ importers:
 
   packages/sdk:
     devDependencies:
-      '@types/node':
-        specifier: ^18.19.3
-        version: 18.19.3
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.7.1
         version: 7.7.1(@typescript-eslint/parser@7.7.1)(eslint@8.57.0)(typescript@5.4.5)
@@ -1619,7 +1613,7 @@ importers:
         specifier: 1.0.11
         version: link:../gatsby-plugin-vercel-analytics
       '@vercel/gatsby-plugin-vercel-builder':
-        specifier: 2.0.47
+        specifier: 2.0.49
         version: link:../gatsby-plugin-vercel-builder
       '@vercel/static-config':
         specifier: 3.0.0
@@ -1656,7 +1650,7 @@ importers:
         specifier: 7.3.13
         version: 7.3.13
       '@vercel/build-utils':
-        specifier: 8.4.3
+        specifier: 8.4.5
         version: link:../build-utils
       '@vercel/error-utils':
         specifier: 2.0.2
@@ -5752,7 +5746,7 @@ packages:
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
     dev: true
 
   /@types/content-type@1.1.5:
@@ -5915,7 +5909,7 @@ packages:
   /@types/graceful-fs@4.1.6:
     resolution: {integrity: sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==}
     dependencies:
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
     dev: true
 
   /@types/hast@2.3.10:
@@ -6093,7 +6087,7 @@ packages:
   /@types/mute-stream@0.0.4:
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
     dependencies:
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
     dev: true
 
   /@types/next-server@8.0.0:
@@ -6185,10 +6179,6 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
-
-  /@types/psl@1.1.0:
-    resolution: {integrity: sha512-HhZnoLAvI2koev3czVPzBNRYvdrzJGLjQbWZhqFmS9Q6a0yumc5qtfSahBGb5g+6qWvA8iiQktqGkwoIXa/BNQ==}
     dev: true
 
   /@types/qs@6.9.7:
@@ -6334,7 +6324,7 @@ packages:
   /@types/webpack@4.41.33:
     resolution: {integrity: sha512-PPajH64Ft2vWevkerISMtnZ8rTs4YmRbs+23c402J0INmxDKCrhZNvwZYtzx96gY2wAtXdrK1BS2fiC8MlLr3g==}
     dependencies:
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.17.1
       '@types/webpack-sources': 3.2.0
@@ -10908,7 +10898,7 @@ packages:
     resolution: {integrity: sha512-EzV94NYKoO09GLXGjXj9JIlXijVck4ONSr5wiCWDvhsvj5jxSrzTmRU/9C1DyB6uToszLs8aifA6NQ7lEQdvFw==}
     engines: {node: '>= 0.8'}
     dependencies:
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
       require-like: 0.1.2
     dev: true
 
@@ -12740,7 +12730,7 @@ packages:
       '@jest/expect': 29.5.0
       '@jest/test-result': 29.5.0
       '@jest/types': 29.5.0
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
       chalk: 4.1.0
       co: 4.6.0
       dedent: 0.7.0
@@ -12998,7 +12988,7 @@ packages:
       '@jest/environment': 29.5.0
       '@jest/fake-timers': 29.5.0
       '@jest/types': 29.5.0
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
       jest-mock: 29.5.0
       jest-util: 29.5.0
     dev: true
@@ -13310,7 +13300,7 @@ packages:
     resolution: {integrity: sha512-NcrQnevGoSp4b5kg+akIpthoAFHxPBcb5P6mYPY0fUNT+sSvmtu6jlkEle3anczUKIKEbMxFimk9oTP/tpIPgA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      '@types/node': 18.19.3
+      '@types/node': 22.5.0
       jest-util: 29.5.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -15774,10 +15764,6 @@ packages:
     resolution: {integrity: sha512-b/YwNhb8lk1Zz2+bXXpS/LK9OisiZZ1SNsSLxN1x2OXVEhW2Ckr/7mWE5vrC1ZTiJlD9g19jWszTmJsB+oEpFQ==}
     dev: true
 
-  /psl@1.1.31:
-    resolution: {integrity: sha512-/6pt4+C+T+wZUieKR620OpzN/LlnNKuWjy1iFLQ/UG35JqHlR/89MP1d96dUfkf6Dne3TuLQzOYEYshJ+Hx8mw==}
-    dev: true
-
   /pump@1.0.3:
     resolution: {integrity: sha512-8k0JupWme55+9tCVE+FS5ULT3K6AbgqrGa58lTT49RpyfwwcGedHqaC5LlQNdEAumn/wFsu6aPwkuPMioy8kqw==}
     dependencies:
@@ -17322,6 +17308,17 @@ packages:
   /titleize@1.0.0:
     resolution: {integrity: sha512-TARUb7z1pGvlLxgPk++7wJ6aycXF3GJ0sNSBTAsTuJrQG5QuZlkUQP+zl+nbjAh4gMX9yDw9ZYklMd7vAfJKEw==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /tldts-core@6.1.47:
+    resolution: {integrity: sha512-6SWyFMnlst1fEt7GQVAAu16EGgFK0cLouH/2Mk6Ftlwhv3Ol40L0dlpGMcnnNiiOMyD2EV/aF3S+U2nKvvLvrA==}
+    dev: true
+
+  /tldts@6.1.47:
+    resolution: {integrity: sha512-R/K2tZ5MiY+mVrnSkNJkwqYT2vUv1lcT6wJvd2emGaMJ7PHUGRY4e3tUsdFCXgqxi2QgbHjL3yJgXCo40v9Hxw==}
+    hasBin: true
+    dependencies:
+      tldts-core: 6.1.47
     dev: true
 
   /tmp-promise@1.0.3:
