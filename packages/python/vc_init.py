@@ -38,9 +38,22 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
     from http.server import HTTPServer
     import http
     import _thread
+    import socket
+    import os
+    import json
 
     server = HTTPServer(('127.0.0.1', 0), base)
     port = server.server_address[1]
+    ipc_fd = int(os.getenv("VERCEL_IPC_FD", ""))
+    sock = socket.socket(fileno=ipc_fd)
+    message = {
+        "type": "server-started",
+        "payload": {
+            "initDuration": 0,
+            "httpPort": port
+        }
+    }
+    sock.sendall((json.dumps(message) + '\\0').encode())
 
     def vc_handler(event, context):
         _thread.start_new_thread(server.handle_request, ())
