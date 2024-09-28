@@ -53,7 +53,8 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
             "httpPort": port
         }
     }
-    sock.sendall((json.dumps(message) + '\\0').encode())
+    sock.sendall((json.dumps(message) + '\0').encode())
+    server.serve_forever()
 
     def vc_handler(event, context):
         _thread.start_new_thread(server.handle_request, ())

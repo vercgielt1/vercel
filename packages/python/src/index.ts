@@ -220,10 +220,11 @@ export const build: BuildV3 = async ({
 
   const output = new Lambda({
     files,
-    handler: handlerPyFilename,
+    handler: `${handlerPyFilename}.vc_handler`,
     runtime: pythonVersion.runtime,
     environment: {
       AWS_LAMBDA_EXEC_WRAPPER: '/opt/rust/bootstrap',
+      SCRIPT_PATH: handlerPyFilename,
     },
     supportsResponseStreaming: true,
   });
