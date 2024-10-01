@@ -1,71 +1,30 @@
 import { packageName } from '../../util/pkg-name';
 import { limitOption, nextOption } from '../../util/arg-common';
 
-export const dnsCommand = {
-  name: 'dns',
-  description: 'Interact with DNS entries for a project.',
+const importSubcommand = {
+  name: 'import',
+  description: 'Import a DNS zone file (see below for examples)',
   arguments: [
     {
-      name: 'command',
+      name: 'domain',
+      required: true,
+    },
+    {
+      name: 'zonefile',
       required: true,
     },
   ],
-  subcommands: [
+  options: [],
+  examples: [],
+} as const;
+
+const listSubcommand = {
+  name: 'ls',
+  description: 'List all DNS entries for a domain',
+  arguments: [
     {
-      name: 'import',
-      description: 'Import a DNS zone file (see below for examples)',
-      arguments: [
-        {
-          name: 'domain',
-          required: true,
-        },
-        {
-          name: 'zonefile',
-          required: true,
-        },
-      ],
-      options: [],
-      examples: [],
-    },
-    {
-      name: 'ls',
-      description: 'List all DNS entries for a domain',
-      arguments: [
-        {
-          name: 'domain',
-          required: true,
-        },
-      ],
-      options: [],
-      examples: [],
-    },
-    {
-      name: 'add',
-      description: 'Add a new DNS entry (see below for examples)',
-      arguments: [
-        {
-          name: 'details',
-          required: true,
-        },
-        {
-          name: 'alias',
-          required: true,
-        },
-      ],
-      options: [],
-      examples: [],
-    },
-    {
-      name: 'rm',
-      description: 'Remove a DNS entry using its ID',
-      arguments: [
-        {
-          name: 'id',
-          required: true,
-        },
-      ],
-      options: [],
-      examples: [],
+      name: 'domain',
+      required: true,
     },
   ],
   options: [
@@ -81,6 +40,55 @@ export const dnsCommand = {
       argument: 'NUMBER',
     },
   ],
+  examples: [],
+} as const;
+
+const addSubcommand = {
+  name: 'add',
+  description: 'Add a new DNS entry (see below for examples)',
+  arguments: [
+    {
+      name: 'details',
+      required: true,
+    },
+    {
+      name: 'alias',
+      required: true,
+    },
+  ],
+  options: [],
+  examples: [],
+} as const;
+
+const removeSubcommand = {
+  name: 'rm',
+  description: 'Remove a DNS entry using its ID',
+  arguments: [
+    {
+      name: 'id',
+      required: true,
+    },
+  ],
+  options: [],
+  examples: [],
+} as const;
+
+export const dnsCommand = {
+  name: 'dns',
+  description: 'Interact with DNS entries for a project.',
+  arguments: [
+    {
+      name: 'command',
+      required: true,
+    },
+  ],
+  subcommands: [
+    importSubcommand,
+    listSubcommand,
+    addSubcommand,
+    removeSubcommand,
+  ],
+  options: [],
   examples: [
     {
       name: 'Add an A record for a subdomain',
