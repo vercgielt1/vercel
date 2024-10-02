@@ -224,7 +224,6 @@ export const build: BuildV3 = async ({
     runtime: pythonVersion.runtime,
     environment: {
       AWS_LAMBDA_EXEC_WRAPPER: '/opt/rust/bootstrap',
-      SCRIPT_PATH: `${handlerPyFilename}.py`,
     },
     supportsResponseStreaming: true,
   });
