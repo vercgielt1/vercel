@@ -42,18 +42,72 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
     import json
     import time
     import base64
+    import functools
+    import contextvars
+    import logging
+    import builtins
 
     ipc_fd = int(os.getenv("VERCEL_IPC_FD", ""))
     sock = socket.socket(fileno=ipc_fd)
 
     send_message = lambda message: sock.sendall((json.dumps(message) + '\0').encode())
+    storage = contextvars.ContextVar('storage', default=None)
+
+    def print_wrapper(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            context = storage.get()
+            send_message({
+                "type": "log",
+                "payload": {
+                    "context": {
+                        "invocationId": context['invocationId'],
+                        "requestId": context['requestId'],
+                    },
+                    "message": base64.b64encode(f"{args[0]}\n".encode()).decode(),
+                    "stream": "stderr" if "file" in kwargs and kwargs["file"] == sys.stderr else "stdout",
+                }
+            })
+        return wrapper
+
+    builtins.print = print_wrapper(builtins.print)
+
+    def logging_wrapper(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            context = storage.get()
+            send_message({
+                "type": "log",
+                "payload": {
+                    "context": {
+                        "invocationId": context['invocationId'],
+                        "requestId": context['requestId'],
+                    },
+                    "message": base64.b64encode(f"{args[0]}\n".encode()).decode(),
+                    "level": "error" if func.__name__ == "error" else "warn" if func.__name__ == "warning" else "info",
+                }
+            })
+        return wrapper
+
+    logging.basicConfig(level=logging.INFO)
+    logging.info = logging_wrapper(logging.info)
+    logging.error = logging_wrapper(logging.error)
+    logging.warning = logging_wrapper(logging.warning)
 
     class Handler(base):
         def do_GET(self):
             invocationId = self.headers.get('x-vercel-internal-invocation-id')
             requestId = int(self.headers.get('x-vercel-internal-request-id'))
 
-            super().do_GET()
+            token = storage.set({
+                "invocationId": invocationId,
+                "requestId": requestId,
+            })
+
+            try:
+                super().do_GET()
+            finally:
+                storage.reset(token)
 
             send_message({
                 "type": "end",
