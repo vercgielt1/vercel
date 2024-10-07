@@ -34,26 +34,46 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
         print('See the docs: https://vercel.com/docs/functions/serverless-functions/runtimes/python')
         exit(1)
 
-    print('using HTTP Handler')
     from http.server import HTTPServer
+    from http.server import BaseHTTPRequestHandler
     import http
-    import _thread
     import socket
     import os
     import json
+    import time
+    import base64
 
-    server = HTTPServer(('127.0.0.1', 0), base)
-    port = server.server_address[1]
     ipc_fd = int(os.getenv("VERCEL_IPC_FD", ""))
     sock = socket.socket(fileno=ipc_fd)
-    message = {
+
+    send_message = lambda message: sock.sendall((json.dumps(message) + '\0').encode())
+
+    class Handler(base):
+        def do_GET(self):
+            invocationId = self.headers.get('x-vercel-internal-invocation-id')
+            requestId = int(self.headers.get('x-vercel-internal-request-id'))
+
+            super().do_GET()
+
+            send_message({
+                "type": "end",
+                "payload": {
+                    "context": {
+                        "invocationId": invocationId,
+                        "requestId": requestId,
+                    },
+                    "error": None,
+                }
+            })
+
+    server = HTTPServer(('127.0.0.1', 0), Handler)
+    send_message({
         "type": "server-started",
         "payload": {
             "initDuration": 0,
-            "httpPort": port
+            "httpPort": server.server_address[1],
         }
-    }
-    sock.sendall((json.dumps(message) + '\0').encode())
+    })
     server.serve_forever()
 
     def vc_handler(event, context):
