@@ -103,12 +103,12 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
             global fetch_id
             fetch_id += 1
             parsed_url = urlparse(url)
-            start_time = time.time()
+            start_time = time.perf_counter()
 
             result = func(self, method, url, *args, **kwargs)
 
-            end_time = time.time()
-            elapsed_time = end_time - start_time
+            end_time = time.perf_counter()
+            elapsed_time = (end_time - start_time) * 1000
             context = storage.get()
             send_message({
                 "type": "metric",
