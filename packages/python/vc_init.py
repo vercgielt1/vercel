@@ -46,12 +46,15 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
     import contextvars
     import logging
     import builtins
+    import requests
+    from urllib.parse import urlparse
 
     ipc_fd = int(os.getenv("VERCEL_IPC_FD", ""))
     sock = socket.socket(fileno=ipc_fd)
 
     send_message = lambda message: sock.sendall((json.dumps(message) + '\0').encode())
     storage = contextvars.ContextVar('storage', default=None)
+    fetch_id = 0
 
     def print_wrapper(func):
         @functools.wraps(func)
@@ -93,6 +96,44 @@ if 'handler' in __vc_variables or 'Handler' in __vc_variables:
     logging.info = logging_wrapper(logging.info)
     logging.error = logging_wrapper(logging.error)
     logging.warning = logging_wrapper(logging.warning)
+
+    def timed_request(func):
+        @functools.wraps(func)
+        def wrapper(self, method, url, *args, **kwargs):
+            global fetch_id
+            fetch_id += 1
+            parsed_url = urlparse(url)
+            start_time = time.time()
+
+            result = func(self, method, url, *args, **kwargs)
+
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            context = storage.get()
+            send_message({
+                "type": "metric",
+                "payload": {
+                    "context": {
+                        "invocationId": context['invocationId'],
+                        "requestId": context['requestId'],
+                    },
+                    "type": "fetch-metric",
+                    "payload": {
+                        "pathname": parsed_url.path,
+                        "search": parsed_url.query,
+                        "start": start_time,
+                        "duration": elapsed_time,
+                        "host": parsed_url.hostname,
+                        "statusCode": result.status_code,
+                        "method": method,
+                        "id": fetch_id,
+                    }
+                }
+            })
+            return result
+        return wrapper
+
+    requests.Session.request = timed_request(requests.Session.request)
 
     class Handler(base):
         def do_GET(self):
